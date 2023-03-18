@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 
 class DetailCategoryFragment : Fragment() {
 
@@ -51,6 +52,24 @@ class DetailCategoryFragment : Fragment() {
             tvCategoryDescription.text = desc
         }
 
+        btnShowDialog.setOnClickListener {
+            // instantiate custom made 'OptionDialogFragment()'
+            val optionDialogFragment = OptionDialogFragment()
+            // 'childFragmentManager' used for creating 'FragmentManager' in 'parent' (DetailCategoryFragment) of a 'child' fragment (OptionDialogFragment)
+            // That being said, it's best for 'DialogFragment()' 'extended class'
+            val fragmentManager = childFragmentManager
+            // 'show' will show object 'OptionDialogFragment' to screen
+            optionDialogFragment.show(fragmentManager, OptionDialogFragment::class.java.simpleName)
+        }
+    }
+
+    // this is the 'action' that will be 'executed' when 'optionDialogListener' from 'OptionDialogFragment' is called
+    // 'internal' is used to make 'property' (optionDialogListener) inside 'OptionDialogFragment' visible in here
+    internal var optionDialogListener: OptionDialogFragment.OnOptionDialogListener = object  : OptionDialogFragment.OnOptionDialogListener {
+        // this function will override 'interface' function inside 'OptionDialogFragment'
+        override fun onOptionChosen(text: String?) {
+            Toast.makeText(requireActivity(), text, Toast.LENGTH_SHORT).show()
+        }
     }
 
 }
