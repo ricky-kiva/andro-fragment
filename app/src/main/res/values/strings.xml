@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FragmentApp</string>
+    <string name="app_name">Fragment App</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="this_profile">"You're on Profile Activity"</string>
     <string name="this_category">This is Category Fragment</string>
