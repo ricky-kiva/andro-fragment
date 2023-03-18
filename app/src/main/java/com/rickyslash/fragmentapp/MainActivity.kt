@@ -9,6 +9,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // 'FragmentManager' is a 'class' responsible to 'organize Fragment' into an 'Activity'
+        val fragmentManager = supportFragmentManager
+        // Instantiate 'HomeFragment' class that is made 'custom' by us
+        val homeFragment = HomeFragment()
+        val fragment = fragmentManager.findFragmentByTag(HomeFragment::class.java.simpleName)
+
+        // the first attempt of assigning 'fragment variable' (above) will always be null
+        // this means the 'if statement' will always be called in the beginning
+        // the 'Tag' will be added by '.add' inside this if statement
+        // the naming of the 'Tag' will has the 'same name' as the 'class' file, which is "HomeFragment"
+        if (fragment !is HomeFragment) {
+            Log.d("FragmentApp", "Fragment Name: " + HomeFragment::class.java.simpleName)
+            fragmentManager
+                .beginTransaction() // 'initiate' the 'FragmentManager'
+                .add(R.id.frame_container, homeFragment) // 'add' will create a new instance of the HomeFragment class & add it to FragmentManager
+                .commit() // 'start' the 'FragmentManager'
+        }
+
     }
 }
 
