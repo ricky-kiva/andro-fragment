@@ -24,7 +24,19 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        TODO("Not yet implemented")
+        if (v?.id == R.id.btn_category) {
+            // instantiate custom 'CategoryFragment' class
+            val categoryFragment = CategoryFragment()
+            // 'parent'FragmentManager used when the Fragment is hosted in 'nested Fragment'
+            // This allow us to get 'FragmentManager' from 'Activity' (the 'supportFragmentManager')
+            val fragmentManager = parentFragmentManager
+            fragmentManager.beginTransaction().apply {
+                // 'replace' will 'change' the 'fragment object' within 'given id'
+                replace(R.id.frame_container, categoryFragment, CategoryFragment::class.java.simpleName)
+                addToBackStack(null) // give 'addToBackStack()' functionality. The name of the process is not assigned (null)
+                commit()
+            }
+        }
     }
 
 }

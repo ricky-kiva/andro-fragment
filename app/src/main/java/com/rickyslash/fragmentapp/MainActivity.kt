@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // 'FragmentManager' is a 'class' responsible to 'organize Fragment' into an 'Activity'
+        // 'support'FragmentManager used when the Fragment is 'hosted' in 'Activity'
         val fragmentManager = supportFragmentManager
         // Instantiate 'HomeFragment' class that is made 'custom' by us
         val homeFragment = HomeFragment()
