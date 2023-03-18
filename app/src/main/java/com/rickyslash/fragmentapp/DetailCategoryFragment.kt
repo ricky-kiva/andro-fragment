@@ -1,5 +1,6 @@
 package com.rickyslash.fragmentapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -60,6 +61,13 @@ class DetailCategoryFragment : Fragment() {
             val fragmentManager = childFragmentManager
             // 'show' will show object 'OptionDialogFragment' to screen
             optionDialogFragment.show(fragmentManager, OptionDialogFragment::class.java.simpleName)
+        }
+
+        // this 'shows' how to 'Call' 'Activity' from 'Fragment'
+        btnProfile.setOnClickListener {
+            // use 'requireActivity' instead of 'this'
+            val intent = Intent(requireActivity(), ProfileActivity::class.java)
+            startActivity(intent)
         }
     }
 
